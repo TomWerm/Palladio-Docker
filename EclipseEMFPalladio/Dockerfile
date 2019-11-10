@@ -9,11 +9,25 @@ RUN cd usr && \
 RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
     -application org.eclipse.equinox.p2.director \
    -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-#    -installIU org.palladiosimulator.editors.commons.feature.group \
-   -tag PalladioNightly \
-   -destination ./usr/eclipse/ \
-   -profile SDKProfile \
-   -list
+   -installIUs ALL
+# RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
+#     -application org.eclipse.equinox.p2.director \
+#    -repository http://download.eclipse.org/eclipse/updates/4.13 \
+#    -installIU org.eclipse.equinox.p2.iu\
+#    -tag p2iu \
+#    -destination ./usr/eclipse/ \
+#    -profile SDKProfile \
+# RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
+#     -application org.eclipse.equinox.p2.director \
+#    -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
+#    -installIU \
+#    org.palladiosimulator.pcm.feature.feature.group,\
+#    org.eclipse.equinox.p2.iu,\
+#    org.eclipse.core.runtime 3.10.0\
+#    -tag PalladioNightly \
+#    -destination ./usr/eclipse/ \
+#    -profile SDKProfile \
+#    -list
 # RUN ./eclipse/eclipse -application org.eclipse.equinox.p2.director \
 #     -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
 #     # -installIU org.palladiosimulator.monitorrepository.feature.source.feature.group\
@@ -27,6 +41,12 @@ RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
 #     -p2.arch x86 \
 #     -list
 
+# RUN ./usr/eclipse/eclipse -application org.eclipse.equinox.p2.director \
+#     -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
+#     -list
+
 # RUN ./eclipse/eclipse -application org.eclipse.cdt.managedbuilder.core.headlessbuild
 # org.palladiosimulator.product.feature.group
 # /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# http://download.eclipse.org/eclipse/updates/4.13 
+# https://www.eclipse.org/downloads/download.php?file=/equinox/drops/R-4.13-201909161045/equinox-SDK-4.13.zip&mirror_id=1190
