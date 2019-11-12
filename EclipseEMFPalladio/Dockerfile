@@ -6,28 +6,25 @@ RUN apt-get update && \
 RUN wget http://ftp.fau.de/eclipse/technology/epp/downloads/release/2019-09/R/eclipse-java-2019-09-R-linux-gtk-x86_64.tar.gz
 RUN cd usr && \
     tar xfz ../../eclipse-java-2019-09-R-linux-gtk-x86_64.tar.gz
-RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
-    -application org.eclipse.equinox.p2.director \
-   -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-   -installIUs ALL
+RUN cd ./usr/eclipse/dropins &&\
+    wget --recursive -nH --cut-dirs=2 \
+    --no-parent https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
+RUN rm ./usr/eclipse/dropins/p2.index && \
+    rm ./usr/eclipse/dropins/index.html && \
+    rm ./usr/eclipse/dropins/aggregate/features/index.html && \
+    rm ./usr/eclipse/dropins/aggregate/plugins/index.html && \
+    rm ./usr/eclipse/dropins/compositeArtifacts.jar && \
+    rm ./usr/eclipse/dropins/content.jar && \
+    rm ./usr/eclipse/dropins/aggregate/artifacts.jar
+RUN apt-get install -y libgtk-3-dev
 # RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
-#     -application org.eclipse.equinox.p2.director \
-#    -repository http://download.eclipse.org/eclipse/updates/4.13 \
-#    -installIU org.eclipse.equinox.p2.iu\
-#    -tag p2iu \
-#    -destination ./usr/eclipse/ \
-#    -profile SDKProfile \
-# RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
-#     -application org.eclipse.equinox.p2.director \
-#    -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-#    -installIU \
-#    org.palladiosimulator.pcm.feature.feature.group,\
-#    org.eclipse.equinox.p2.iu,\
-#    org.eclipse.core.runtime 3.10.0\
-#    -tag PalladioNightly \
-#    -destination ./usr/eclipse/ \
-#    -profile SDKProfile \
-#    -list
+#      -application org.eclipse.equinox.p2.artifact.repository.mirrorApplication \
+#      -source https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
+#      -destination ./usr/eclipse/dropins && \
+#      ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
+#      -application org.eclipse.equinox.p2.metadata.repository.mirrorApplication \
+#      -source https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
+#      -destination ./usr/eclipse/dropins
 # RUN ./eclipse/eclipse -application org.eclipse.equinox.p2.director \
 #     -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
 #     # -installIU org.palladiosimulator.monitorrepository.feature.source.feature.group\
@@ -40,6 +37,10 @@ RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
 #     -p2.ws gtk \
 #     -p2.arch x86 \
 #     -list
+# RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
+#     -application org.eclipse.equinox.p2.director \
+#    -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
+#    -installIUs ALL
 
 # RUN ./usr/eclipse/eclipse -application org.eclipse.equinox.p2.director \
 #     -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
