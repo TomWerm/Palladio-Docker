@@ -10,6 +10,19 @@
 - nutzen des dropins folders stattdessen
 - Installation scheint grundsätzlich zu funktionieren
 
+## Generelle Ziele
+* Experiment-Automation: hat Eclipse Application, die man starten kann. Unklar, ob es ohne XServer startet.
+* Retten des EDP2-Repository/CSV: aktuell unklar. Mögliche Lösung mit neuer Launch Typ + Launch Group (zuerst Experiment durchführen, dann Ergebnisse exportieren).
+
+* Dockerfile definieren:
+    * lädt einen bestimmten Palladio-Drop herunter, s.o.
+    * Run-Configuration + Artefakte kann man von außen in den Container geben, z.B. per ADD
+
+* Schritte:
+    * Docker-Image
+    * Nightly Aggregator-Seite hineininstallieren (p2 Direktor)
+    * Example von Experiment-Automation zum Laufen bekommen [5]
+
 ## Errors
 ```java
 java.lang.UnsatisfiedLinkError: 'void org.eclipse.swt.internal.gtk.OS._cachejvmptr()'
@@ -23,7 +36,9 @@ java.lang.UnsatisfiedLinkError: 'void org.eclipse.swt.internal.gtk.OS._cachejvmp
         at org.eclipse.ui.PlatformUI.createDisplay(PlatformUI.java:162)
         ...
 ```
-Vlt [9]?
+- Vlt [9]?
+- downgrade der ubuntu version von 20.04 auf lts version 18.04
+    - Ergebnis: Error tritt genauso auf
 
 ## TODO
 - Spezieller Release von Palladio, nicht eine sich häufig verändernde
@@ -74,7 +89,7 @@ RUN rm ./usr/eclipse/dropins/p2.index && \
       -source https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
       -destination ./usr/eclipse/dropins
 ```
-- mirror der repositories, hat ohne Ergebnis recht lang gearbeitet
+- mirror der repositories, hat ohne Ergebnis recht lang gearbeitet, hab ich dann abgebrochen
 
 ```docker
 RUN ./eclipse/eclipse -application org.eclipse.equinox.p2.director \

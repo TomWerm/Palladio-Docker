@@ -16,7 +16,9 @@ RUN rm ./usr/eclipse/dropins/p2.index && \
     rm ./usr/eclipse/dropins/compositeArtifacts.jar && \
     rm ./usr/eclipse/dropins/content.jar && \
     rm ./usr/eclipse/dropins/aggregate/artifacts.jar
-RUN apt-get install -y libgtk-3-dev
+# RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin
+# COPY source dest
+# RUN apt-get install -y libgtk-3-dev
 # RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
 #      -application org.eclipse.equinox.p2.artifact.repository.mirrorApplication \
 #      -source https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
