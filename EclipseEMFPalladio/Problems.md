@@ -1,9 +1,8 @@
 # Probleme
 ## P2 Director
-- es gibt keine installAll Operation
-- hat Palladio ein Paket mit allen Features?
-- p2 scheint die Referenzen nicht vernünftig aufzulösen
-    - ein equinox packet, welches auf der nightly seite vorhanden ist, wird nicht davon resolved
+- es gibt keine installAll Operation - einzeln installieren
+- hat Palladio ein Paket mit allen Features? - nein
+- p2 scheint die Referenzen nicht vernünftig aufzulösen - mit der Eclipse Update Site gehts``
 ## Eclipse
 - 
 ## Idee
@@ -24,21 +23,17 @@
     * Example von Experiment-Automation zum Laufen bekommen [5]
 
 ## Errors
-```java
-java.lang.UnsatisfiedLinkError: 'void org.eclipse.swt.internal.gtk.OS._cachejvmptr()'
-        at org.eclipse.swt.internal.gtk.OS._cachejvmptr(Native Method)
-        at org.eclipse.swt.internal.gtk.OS.cachejvmptr(OS.java:494)
-        at org.eclipse.swt.internal.gtk.OS.<clinit>(OS.java:93)
-        at org.eclipse.swt.internal.Converter.wcsToMbcs(Converter.java:209)
-        at org.eclipse.swt.internal.Converter.wcsToMbcs(Converter.java:155)
-        at org.eclipse.swt.widgets.Display.<clinit>(Display.java:161)
-        at org.eclipse.ui.internal.Workbench.createDisplay(Workbench.java:735)
-        at org.eclipse.ui.PlatformUI.createDisplay(PlatformUI.java:162)
-        ...
+```docker
+Cannot complete the install because one or more required items could not be found.
+        Software being installed: Palladio Component Model - Sirius Editors 4.2.0.201911190149 (org.palladiosimulator.editors.sirius.feature.feature.group 4.2.0.201911190149)
+        Missing requirement: MDSD Jobs for Palladio Workflow Engine 4.2.0.201911190033 (de.uka.ipd.sdq.workflow.mdsd 4.2.0.201911190033) requires 'osgi.bundle; org.eclipse.m2m.qvt.oml.runtime 2.0.0' but it could not be found
+        Cannot satisfy dependency:
+                From: Architectural Templates 4.2.0.201911190146 (org.palladiosimulator.architecturaltemplates.feature.feature.group 4.2.0.201911190146)
+                To: org.eclipse.equinox.p2.iu; de.uka.ipd.sdq.workflow.mdsd 2.1.1
+        Cannot satisfy dependency:
+                From: Palladio Component Model - Sirius Editors 4.2.0.201911190149 (org.palladiosimulator.editors.sirius.feature.feature.group 4.2.0.201911190149)
+                To: org.eclipse.equinox.p2.iu; org.palladiosimulator.architecturaltemplates.feature.feature.group 1.0.6
 ```
-- Vlt [9]?
-- downgrade der ubuntu version von 20.04 auf lts version 18.04
-    - Ergebnis: Error tritt genauso auf
 
 ## TODO
 - Spezieller Release von Palladio, nicht eine sich häufig verändernde
