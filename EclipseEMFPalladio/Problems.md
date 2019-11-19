@@ -34,6 +34,12 @@ Cannot complete the install because one or more required items could not be foun
                 From: Palladio Component Model - Sirius Editors 4.2.0.201911190149 (org.palladiosimulator.editors.sirius.feature.feature.group 4.2.0.201911190149)
                 To: org.eclipse.equinox.p2.iu; org.palladiosimulator.architecturaltemplates.feature.feature.group 1.0.6
 ```
+- gefixed mit der eclipse update site
+```docker
+The installable unit org.palladiosimulator.product.feature.feature.group has not been found.
+```
+- installing org.palladiosimulator.product.feature.feature.group
+- kp
 
 ## TODO
 - Spezieller Release von Palladio, nicht eine sich häufig verändernde
@@ -50,64 +56,17 @@ RUN apt-get update && \
 - ausprobieren, ob update notwendig ist
 
 ```docker
-RUN wget http://ftp.fau.de/eclipse/technology/epp/downloads/release/2019-09/R/eclipse-java-2019-09-R-linux-gtk-x86_64.tar.gz
-RUN cd usr && \
-    tar xfz ../../eclipse-java-2019-09-R-linux-gtk-x86_64.tar.gz
+ADD InstallEclipse.sh /usr/InstallEclipse.sh
+RUN /usr/InstallEclipse.sh
+ADD GetPackages.sh /usr/GetPackages.sh
+ADD InstallFeature.sh /usr/InstallFeature.sh
+RUN /usr/GetPackages.sh
 ```
-- eclipse runterladen und im ordner usr extrahieren
-
-```docker
-RUN cd ./usr/eclipse/dropins &&\
-    wget --recursive -nH --cut-dirs=2 \
-    --no-parent https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
-RUN rm ./usr/eclipse/dropins/p2.index && \
-    rm ./usr/eclipse/dropins/index.html && \
-    rm ./usr/eclipse/dropins/aggregate/features/index.html && \
-    rm ./usr/eclipse/dropins/aggregate/plugins/index.html && \
-    rm ./usr/eclipse/dropins/compositeArtifacts.jar && \
-    rm ./usr/eclipse/dropins/content.jar && \
-    rm ./usr/eclipse/dropins/aggregate/artifacts.jar
-```
-- palladio in den dropins ordner herunterladen und nicht benötigte Dateien entfernen
-- die jars müssen entfernt werden, sonst handelt es sich bereits um ein p2-Repository, das nicht über den dropins folder eingelesen werden kann
-- --cut-dirs=2, um die ordnerstruktur zu vereinfachen
-
+- added die skripte, lädt eclipse runter und entpackt es im Ordner usr
+- holt die features von [4] und installiert sie mit dem InstallFeature skript im eclipse
+- dauert etwas lang ~5min
 
 ## Versuche
-```docker
- RUN ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
-      -application org.eclipse.equinox.p2.artifact.repository.mirrorApplication \
-      -source https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-      -destination ./usr/eclipse/dropins && \
-      ./usr/eclipse/eclipse -vm /usr/lib/jvm/java-11-openjdk-amd64/bin \
-      -application org.eclipse.equinox.p2.metadata.repository.mirrorApplication \
-      -source https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-      -destination ./usr/eclipse/dropins
-```
-- mirror der repositories, hat ohne Ergebnis recht lang gearbeitet, hab ich dann abgebrochen
-
-```docker
-RUN ./eclipse/eclipse -application org.eclipse.equinox.p2.director \
-    -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-    # -installIU org.palladiosimulator.monitorrepository.feature.source.feature.group\
-    -tag InitialState \
-    -destination ./eclipse \
-    -profile SDKProfile \
-    -profileProperties org.eclipse.update.install.features=true \
-    -bundlepool ./eclipse/plugins \
-    -p2.os linux \
-    -p2.ws gtk \
-    -p2.arch x86 \
-    -list
-```
-- p2 director, ergab verschiedene Probleme, unter anderem dependencies auf im repository vorhandene, aber noch nicht installierte packages, die nicht aufgelöst wurden
-
-```docker
-RUN ./usr/eclipse/eclipse -application org.eclipse.equinox.p2.director \
-    -repository https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
-    -list
-```
-- liste alle vorhandenen packages auf
 
 ## Quellen
 [1] [p2 director](https://help.eclipse.org/kepler/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)\
