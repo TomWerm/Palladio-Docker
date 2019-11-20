@@ -1,3 +1,8 @@
+# Frage
+## Ideen
+- Soll eher die Moeglichkeit gegeben werden ein git repo anzugeben oder
+- Dateien vom lokalen Rechner ins Image kopieren
+
 # Probleme
 ## P2 Director
 - es gibt keine installAll Operation - einzeln installieren

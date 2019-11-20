@@ -1,15 +1,23 @@
 FROM ubuntu:20.04
+# Add some programs to improve usability
 RUN apt-get update && \ 
     apt-get install -y openjdk-11-jre-headless && \
     apt-get install wget -y && \
-    apt-get install -y vim
-ADD InstallEclipse.sh /usr/InstallEclipse.sh
+    apt-get install -y vim && \
+    apt-get install -y git
+COPY InstallEclipse.sh /usr/InstallEclipse.sh
+COPY GetPackages.sh /usr/GetPackages.sh
+COPY InstallFeature.sh /usr/InstallFeature.sh
+COPY InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
+COPY features.txt usr/features.txt
+# Install eclipse from the mirror in the shell file
 RUN /usr/InstallEclipse.sh
-ADD GetPackages.sh /usr/GetPackages.sh
-ADD InstallFeature.sh /usr/InstallFeature.sh
+# Download the Palladio feature name and install them
 RUN /usr/GetPackages.sh
-ADD InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
-ADD features.txt usr/features.txt
+###############################################
+# Complete Palladio installation at this point
+###############################################
+# Install everything from feature.txt
 RUN usr/InstallLocalUpdates.sh
 #
 # RUN ./eclipse/eclipse -application org.eclipse.cdt.managedbuilder.core.headlessbuild
