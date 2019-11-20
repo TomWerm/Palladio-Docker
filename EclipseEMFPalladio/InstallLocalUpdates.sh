@@ -1,1 +1,1 @@
-sed '1d;s/\([^,]*\),\([^,]*\)/ "\1" "\2"/' /usr/features.csv | xargs /usr/InstallFeature.sh
+sed '1d;s/\([^,]*\)%\([^,]*\)/ "\1" "\2"/' /usr/features.txt | xargs /usr/InstallFeature.sh

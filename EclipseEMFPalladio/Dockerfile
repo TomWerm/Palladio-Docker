@@ -9,7 +9,7 @@ ADD GetPackages.sh /usr/GetPackages.sh
 ADD InstallFeature.sh /usr/InstallFeature.sh
 RUN /usr/GetPackages.sh
 ADD InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
-ADD features.csv usr/features.csv
+ADD features.txt usr/features.txt
 RUN usr/InstallLocalUpdates.sh
 #
 # RUN ./eclipse/eclipse -application org.eclipse.cdt.managedbuilder.core.headlessbuild

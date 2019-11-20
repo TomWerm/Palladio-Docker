@@ -1,0 +1,2 @@
+package,updatesite
+org.palladiosimulator.editors.commons.feature%https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/

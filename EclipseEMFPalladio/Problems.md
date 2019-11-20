@@ -8,6 +8,7 @@
 ## Idee
 - nutzen des dropins folders stattdessen
 - Installation scheint grundsätzlich zu funktionieren
+- features.txt keine csv, da "," als Trennzeichen beim import, stattdessen % (nicht teil einer validen url) [12]
 
 ## Generelle Ziele
 * Experiment-Automation: hat Eclipse Application, die man starten kann. Unklar, ob es ohne XServer startet.
@@ -80,7 +81,7 @@ RUN /usr/GetPackages.sh
 [9] [UnsatisfiedLinkError](https://bugs.eclipse.org/bugs/show_bug.cgi?id=549244)\
 [10] [mirror eclipse plugin sites](https://stackoverflow.com/questions/1371176/downloading-eclipse-plug-in-update-sites-for-offline-installation)\
 [11] [Eclipse headless](https://gnu-mcu-eclipse.github.io/advanced/headless-builds/)\
-[12] []()\
+[12] [Valid URL](https://stackoverflow.com/questions/1547899/which-characters-make-a-url-invalid)\
 [13] []()\
 [14] []()\
 [15] []()\
