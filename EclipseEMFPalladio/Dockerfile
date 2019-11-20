@@ -19,4 +19,7 @@ RUN /usr/GetPackages.sh
 COPY InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
 COPY features.txt usr/features.txt
 RUN usr/InstallLocalUpdates.sh
-COPY org.palladiosimulator.experimentautomation.examples.espresso /usr
+# Run the experiment automation and copy the experiment files
+COPY RunExperimentAutomation.sh /usr/RunExperimentAutomation.sh
+COPY ExperimentData /usr/experimentData
+RUN RunExperimentAutomation.sh
