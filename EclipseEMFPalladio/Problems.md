@@ -2,7 +2,7 @@
 ## P2 Director
 - es gibt keine installAll Operation - einzeln installieren
 - hat Palladio ein Paket mit allen Features? - nein
-- p2 scheint die Referenzen nicht vernünftig aufzulösen - mit der Eclipse Update Site gehts``
+- p2 scheint die Referenzen nicht vernünftig aufzulösen - mit der Eclipse Update Site gehts
 ## Eclipse
 - 
 ## Idee
