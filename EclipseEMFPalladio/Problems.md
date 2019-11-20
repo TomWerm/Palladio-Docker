@@ -1,7 +1,10 @@
 # Frage
 ## Ideen
-- Soll eher die Moeglichkeit gegeben werden ein git repo anzugeben oder
-- Dateien vom lokalen Rechner ins Image kopieren
+    - Soll eher die Moeglichkeit gegeben werden ein git repo anzugeben oder
+    - Dateien vom lokalen Rechner ins Image kopieren
+
+- Was genau soll alles im Run des docker containers sein und was
+- im build? wenn dateien hinzugefuegt werden sollen?
 
 # Probleme
 ## P2 Director
@@ -9,7 +12,7 @@
 - hat Palladio ein Paket mit allen Features? - nein
 - p2 scheint die Referenzen nicht vernünftig aufzulösen - mit der Eclipse Update Site gehts
 ## Eclipse
-- 
+![](choices.png)
 ## Idee
 - nutzen des dropins folders stattdessen
 - Installation scheint grundsätzlich zu funktionieren
@@ -71,6 +74,15 @@ RUN /usr/GetPackages.sh
 - added die skripte, lädt eclipse runter und entpackt es im Ordner usr
 - holt die features von [4] und installiert sie mit dem InstallFeature skript im eclipse
 - dauert etwas lang ~5min
+
+```docker
+ RUN ./eclipse/eclipse -application org.eclipse.cdt.managedbuilder.core.headlessbuild
+ org.palladiosimulator.product.feature.group
+ /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+ http://download.eclipse.org/eclipse/updates/4.13 
+ https://www.eclipse.org/downloads/download.php?file=/equinox/drops/R-4.13-201909161045/equinox-SDK-4.13.zip&mirror_id=1190
+```
+- headless build
 
 ## Versuche
 
