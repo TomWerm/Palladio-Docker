@@ -1,2 +1,3 @@
-package,updatesite
-org.palladiosimulator.editors.commons.feature%https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
+#package%updatesite
+#Installation is not working
+#org.palladiosimulator.product.feature%https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
