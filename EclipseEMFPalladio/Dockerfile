@@ -21,4 +21,4 @@ COPY features.txt usr/features.txt
 RUN usr/InstallLocalUpdates.sh
 # Run the experiment automation and copy the experiment files
 COPY RunExperimentAutomation.sh /usr/RunExperimentAutomation.sh
-COPY ExperimentData /usr/workspace/experimentData
+COPY ExperimentData /usr/experimentData
