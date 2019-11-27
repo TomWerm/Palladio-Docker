@@ -1,2 +1,7 @@
-/usr/bin/wget -O /usr/packages.xml 'https://raw.githubusercontent.com/PalladioSimulator/Palladio-Bench-Product/master/products/org.palladiosimulator.product/org.palladiosimulator.palladiobench.product'
-sed -n 's|<feature id="\(.*\).*|\1|p' /usr/packages.xml | tail -n +2 | sed 's/".*//' | xargs -I{} /usr/InstallFeature.sh  {} https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
+#/usr/bin/wget -O /usr/packages.xml 'https://raw.githubusercontent.com/PalladioSimulator/Palladio-Bench-Product/master/products/org.palladiosimulator.product/org.palladiosimulator.palladiobench.product'
+#sed -n 's|<feature id="\(.*\).*|\1|p' /usr/packages.xml | tail -n +2 | sed 's/".*//' | xargs -I{} /usr/InstallFeature.sh  {} https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
+echo installing "$1"
+/usr/eclipse/eclipse \
+    -application org.eclipse.equinox.p2.director \
+    -repository https://download.eclipse.org/releases/2019-09/,https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/ \
+    -installIU org.palladiosimulator.edp2.feature.feature.group,org.palladiosimulator.pcm.feature.feature.group,org.palladiosimulator.simucom.feature.feature.group,org.palladiosimulator.solver.feature.feature.group,org.palladiosimulator.recorderframework.feature.feature.group,org.palladiosimulator.analyzer.feature.feature.group,org.palladiosimulator.monitorrepository.feature.feature.group,org.palladiosimulator.simulizar.feature.feature.group,org.palladiosimulator.simulation.abstractsimengine.desmoj.feature.feature.group,org.palladiosimulator.experimentautomation.feature.feature.group,org.palladiosimulator.experimentautomation.application.feature.feature.group,org.palladiosimulator.experimentautomation.application.tooladapter.simulizar.feature.feature.group
