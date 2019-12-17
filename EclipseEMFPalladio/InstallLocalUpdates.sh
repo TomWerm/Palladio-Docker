@@ -1,1 +1,1 @@
-sed '/^#/ d' /usr/features.txt | sed 's/\([^,]*\)%\([^,]*\)/ "\1" "\2"/' | xargs -r /usr/InstallFeature.sh
+sed '/^#/ d' /usr/features.txt | sed 's/\([^%]*\)%\([^%]*\)/ "\1" "\2"/' | xargs -r /usr/InstallFeature.sh
