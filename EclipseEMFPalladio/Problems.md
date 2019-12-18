@@ -13,18 +13,23 @@
 - p2 scheint die Referenzen nicht vernünftig aufzulösen - mit der Eclipse Update Site gehts
 ## Eclipse
 ![](choices.png)
+- einen Tag später ging alles problemlos
 ## Idee
-- nutzen des dropins folders stattdessen
-- Installation scheint grundsätzlich zu funktionieren
+- ~~nutzen des dropins folders stattdessen~~
+- ~~Installation scheint grundsätzlich zu funktionieren~~
 - features.txt keine csv, da "," als Trennzeichen beim import, stattdessen % (nicht teil einer validen url) [12]
+- features.txt zur generellen Installation von Palladio nutzen
 
 ## Generelle Ziele
 * Experiment-Automation: hat Eclipse Application, die man starten kann. Unklar, ob es ohne XServer startet.
+  - TODO minimales Dockerfile ausprobieren
 * Retten des EDP2-Repository/CSV: aktuell unklar. Mögliche Lösung mit neuer Launch Typ + Launch Group (zuerst Experiment durchführen, dann Ergebnisse exportieren).
+  - FileDatasource mit location Attribut exportiert eine edp2-Datei
 
 * Dockerfile definieren:
     * lädt einen bestimmten Palladio-Drop herunter, s.o.
     * Run-Configuration + Artefakte kann man von außen in den Container geben, z.B. per ADD
+      - Von außen reingegebene Dateien werden über das cmd-Skript gemanaget, damit das docker file nicht mehr modifiziert werden muss
 
 * Schritte:
     * Docker-Image
@@ -48,314 +53,7 @@ Cannot complete the install because one or more required items could not be foun
 The installable unit org.palladiosimulator.product.feature.feature.group has not been found.
 ```
 - installing org.palladiosimulator.product.feature.feature.group
-- kp
-
-```java
-!SESSION 2019-11-24 18:48:45.944 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.8.0_231
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
-Framework arguments:  -application org.palladiosimulator.experimentautomation.application F:\Projekte\docker\docker\EclipseEMFPalladio\ExperimentData\model\Experiments\Capacity.experiments
-Command-line arguments:  -application org.palladiosimulator.experimentautomation.application -data F:\eclipse\Docker_eclipse\workspace/../runtime-New_configuration -dev file:F:/eclipse/Docker_eclipse/workspace/.metadata/.plugins/org.eclipse.pde.core/New_configuration/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog F:\Projekte\docker\docker\EclipseEMFPalladio\ExperimentData\model\Experiments\Capacity.experiments
-
-This is a continuation of log file F:\eclipse\Docker_eclipse\runtime-New_configuration\.metadata\.bak_1.log
-Created Time: 2019-11-24 18:48:53.932
-
-!ENTRY org.palladiosimulator.architecturaltemplates.ui 2 0 2019-11-24 18:48:53.933
-!MESSAGE Could not resolve module: org.palladiosimulator.architecturaltemplates.ui [1238]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.architecturaltemplates; bundle-version="1.0.3"
-    -> Bundle-SymbolicName: org.palladiosimulator.architecturaltemplates; bundle-version="1.1.1.201911240201"; singleton:="true"
-       org.palladiosimulator.architecturaltemplates [1231]
-         Unresolved requirement: Require-Bundle: org.modelversioning.emfprofile; bundle-version="1.1.0"; visibility:="reexport"
-           -> Bundle-SymbolicName: org.modelversioning.emfprofile; bundle-version="1.1.0"; singleton:="true"
-              org.modelversioning.emfprofile [1215]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.modelversioning.emfprofile.application.registry 2 0 2019-11-24 18:48:53.933
-!MESSAGE Could not resolve module: org.modelversioning.emfprofile.application.registry [1216]
-  Unresolved requirement: Require-Bundle: org.modelversioning.emfprofile; bundle-version="1.1.0"
-    -> Bundle-SymbolicName: org.modelversioning.emfprofile; bundle-version="1.1.0"; singleton:="true"
-       org.modelversioning.emfprofile [1215]
-         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.palladiosimulator.experimentautomation.application.tooladapter.simulizar.model 2 0 2019-11-24 18:48:53.934
-!MESSAGE Could not resolve module: org.palladiosimulator.experimentautomation.application.tooladapter.simulizar.model [1283]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.edp2; visibility:="reexport"
-    -> Bundle-SymbolicName: org.palladiosimulator.edp2; bundle-version="4.2.0.201911240043"; singleton:="true"
-       org.palladiosimulator.edp2 [1260]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.palladiosimulator.measurementframework 2 0 2019-11-24 18:48:53.934
-!MESSAGE Could not resolve module: org.palladiosimulator.measurementframework [1291]
-  Unresolved requirement: Require-Bundle: org.jscience; bundle-version="4.1.3"
-    -> Bundle-SymbolicName: org.jscience; bundle-version="4.3.1"
-       org.jscience [1202]
-         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.palladiosimulator.experimentautomation 2 0 2019-11-24 18:48:53.934
-!MESSAGE Could not resolve module: org.palladiosimulator.experimentautomation [1277]
-  Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; bundle-version="2.1.0"; visibility:="reexport"
-    -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-       de.uka.ipd.sdq.identifier [44]
-         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY de.uka.ipd.sdq.pcm.gmf.seff.custom 2 0 2019-11-24 18:48:53.935
-!MESSAGE Could not resolve module: de.uka.ipd.sdq.pcm.gmf.seff.custom [67]
-  Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.pcm.gmf.seff; bundle-version="2.0.0"
-    -> Bundle-SymbolicName: de.uka.ipd.sdq.pcm.gmf.seff; bundle-version="4.2.0.201911240056"; singleton:="true"
-       de.uka.ipd.sdq.pcm.gmf.seff [66]
-         Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm; bundle-version="4.0.0"; visibility:="reexport"
-           -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-              org.palladiosimulator.pcm [1313]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.units [102]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.identifier [44]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.stoex [98]
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                            de.uka.ipd.sdq.probfunction [74]
-                              Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                              Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                                -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY org.palladiosimulator.editors.sirius.repository.custom 2 0 2019-11-24 18:48:53.935
-!MESSAGE Could not resolve module: org.palladiosimulator.editors.sirius.repository.custom [1251]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm; bundle-version="4.0.0"
-    -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-       org.palladiosimulator.pcm [1313]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.units [102]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.stoex [98]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.probfunction [74]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY org.palladiosimulator.editors.sirius.assembly 2 0 2019-11-24 18:48:53.936
-!MESSAGE Could not resolve module: org.palladiosimulator.editors.sirius.assembly [1246]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm; bundle-version="4.1.0"
-    -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-       org.palladiosimulator.pcm [1313]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.units [102]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.stoex [98]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.probfunction [74]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY de.uka.ipd.sdq.pcm.gmf.repository 2 0 2019-11-24 18:48:53.936
-!MESSAGE Could not resolve module: de.uka.ipd.sdq.pcm.gmf.repository [60]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm; bundle-version="4.0.0"; visibility:="reexport"
-    -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-       org.palladiosimulator.pcm [1313]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.units [102]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.stoex [98]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.probfunction [74]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY org.palladiosimulator.pcm.editor 2 0 2019-11-24 18:48:53.936
-!MESSAGE Could not resolve module: org.palladiosimulator.pcm.editor [1315]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm.edit; visibility:="reexport"
-    -> Bundle-SymbolicName: org.palladiosimulator.pcm.edit; bundle-version="4.2.0.201911240050"; singleton:="true"
-       org.palladiosimulator.pcm.edit [1314]
-         Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm; visibility:="reexport"
-           -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-              org.palladiosimulator.pcm [1313]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.units [102]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.identifier [44]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.stoex [98]
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                            de.uka.ipd.sdq.probfunction [74]
-                              Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                              Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                                -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY org.palladiosimulator.monitorrepository.edit 2 0 2019-11-24 18:48:53.937
-!MESSAGE Could not resolve module: org.palladiosimulator.monitorrepository.edit [1309]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.monitorrepository; bundle-version="2.0.1"; visibility:="reexport"
-    -> Bundle-SymbolicName: org.palladiosimulator.monitorrepository; bundle-version="4.2.0.201911240054"; singleton:="true"
-       org.palladiosimulator.monitorrepository [1308]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; bundle-version="2.1.0"; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.palladiosimulator.pcm.ui 2 0 2019-11-24 18:48:53.937
-!MESSAGE Could not resolve module: org.palladiosimulator.pcm.ui [1320]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm; bundle-version="4.0.0"
-    -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-       org.palladiosimulator.pcm [1313]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.units [102]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.stoex [98]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.probfunction [74]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY de.desmoj 2 0 2019-11-24 18:48:53.938
-!MESSAGE Could not resolve module: de.desmoj [16]
-  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.palladiosimulator.experimentautomation.edit 2 0 2019-11-24 18:48:53.938
-!MESSAGE Could not resolve module: org.palladiosimulator.experimentautomation.edit [1284]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.experimentautomation; bundle-version="1.0.0"; visibility:="reexport"
-    -> Bundle-SymbolicName: org.palladiosimulator.experimentautomation; bundle-version="4.2.0.qualifier"; singleton:="true"
-       org.palladiosimulator.experimentautomation [1277]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; bundle-version="2.1.0"; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY de.uka.ipd.sdq.workflow.workbench 2 0 2019-11-24 18:48:53.939
-!MESSAGE Could not resolve module: de.uka.ipd.sdq.workflow.workbench [110]
-  Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.workflow.logging.console; bundle-version="1.0.0"; visibility:="reexport"
-    -> Bundle-SymbolicName: de.uka.ipd.sdq.workflow.logging.console; bundle-version="4.2.0.201911240035"; singleton:="true"
-       de.uka.ipd.sdq.workflow.logging.console [107]
-         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.palladiosimulator.solver 2 0 2019-11-24 18:48:53.940
-!MESSAGE Could not resolve module: org.palladiosimulator.solver [1373]
-  Unresolved requirement: Require-Bundle: org.palladiosimulator.pcm
-    -> Bundle-SymbolicName: org.palladiosimulator.pcm; bundle-version="4.2.0.201911240046"; singleton:="true"
-       org.palladiosimulator.pcm [1313]
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.units [102]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.identifier; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.identifier; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.identifier [44]
-                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.stoex; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.stoex; bundle-version="4.2.0.201911240028"; singleton:="true"
-              de.uka.ipd.sdq.stoex [98]
-                Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-                  -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-                     de.uka.ipd.sdq.probfunction [74]
-                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-                       Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.units; visibility:="reexport"
-                         -> Bundle-SymbolicName: de.uka.ipd.sdq.units; bundle-version="4.2.0.201911240028"; singleton:="true"
-         Unresolved requirement: Require-Bundle: de.uka.ipd.sdq.probfunction; visibility:="reexport"
-           -> Bundle-SymbolicName: de.uka.ipd.sdq.probfunction; bundle-version="4.2.0.201911240028"; singleton:="true"
-
-
-!ENTRY org.apache.chemistry.opencmis 2 0 2019-11-24 18:48:53.940
-!MESSAGE Could not resolve module: org.apache.chemistry.opencmis [153]
-  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
-
-
-!ENTRY org.eclipse.osgi 4 0 2019-11-24 18:48:53.940
-!MESSAGE Application error
-!STACK 1
-java.lang.RuntimeException: Application "org.palladiosimulator.experimentautomation.application" could not be found in the registry. The applications available are: org.eclipse.ant.core.antRunner, org.eclipse.ant.ui.antRunner, org.eclipse.e4.ui.workbench.swt.E4Application, org.eclipse.e4.ui.workbench.swt.GenTopic, org.eclipse.emf.cdo.explorer.ui.app, org.eclipse.emf.cdo.server.app, org.eclipse.emf.codegen.CodeGen, org.eclipse.emf.codegen.JMerger, org.eclipse.emf.codegen.ecore.Generator, org.eclipse.emf.importer.ecore.Ecore2GenModel, org.eclipse.emf.importer.java.Java2GenModel, org.eclipse.emf.importer.rose.Rose2GenModel, org.eclipse.emf.mwe.core.WorkflowRunner, org.eclipse.equinox.app.error, org.eclipse.equinox.p2.director, org.eclipse.equinox.p2.garbagecollector.application, org.eclipse.equinox.p2.publisher.InstallPublisher, org.eclipse.equinox.p2.publisher.EclipseGenerator, org.eclipse.equinox.p2.publisher.ProductPublisher, org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher, org.eclipse.equinox.p2.reconciler.application, org.eclipse.equinox.p2.repository.repo2runnable, org.eclipse.equinox.p2.repository.metadataverifier, org.eclipse.equinox.p2.artifact.repository.mirrorApplication, org.eclipse.equinox.p2.metadata.repository.mirrorApplication, org.eclipse.equinox.p2.touchpoint.natives.nativePackageExtractor, org.eclipse.equinox.p2.updatesite.UpdateSitePublisher, org.eclipse.equinox.p2.publisher.UpdateSitePublisher, org.eclipse.equinox.p2.publisher.CategoryPublisher, org.eclipse.help.base.infocenterApplication, org.eclipse.help.base.helpApplication, org.eclipse.help.base.indexTool, org.eclipse.jdt.apt.core.aptBuild, org.eclipse.jdt.core.JavaCodeFormatter, org.eclipse.jdt.core.JavaIndexer, org.eclipse.oomph.p2.core.RepositoryIntegrityAnalyzer, org.eclipse.oomph.p2.core.P2Indexer, org.eclipse.oomph.setup.core.SetupArchiver, org.eclipse.pde.api.tools.apiAnalyzer, org.eclipse.pde.build.Build, org.eclipse.pde.junit.runtime.uitestapplication, org.eclipse.pde.junit.runtime.legacytestapplication, org.eclipse.pde.junit.runtime.coretestapplication, org.eclipse.pde.junit.runtime.coretestapplicationnonmain, org.eclipse.pde.junit.runtime.nonuithreadtestapplication, org.eclipse.ui.ide.workbench, org.eclipse.uml2.ant.defineProfile, org.eclipse.uml2.uml.ecore.importer.UML2GenModel, org.eclipse.wst.jsdt.core.JavaCodeFormatter, org.eclipse.xsd.ecore.importer.XSD2GenModel.
-	at org.eclipse.equinox.internal.app.EclipseAppContainer.startDefaultApp(EclipseAppContainer.java:252)
-	at org.eclipse.equinox.internal.app.MainApplicationLauncher.run(MainApplicationLauncher.java:33)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:400)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:660)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:597)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1468)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1441)
-
-```
+- dieses feature gibt es nicht
 
 ## TODO
 - Spezieller Release von Palladio, nicht eine sich häufig verändernde
@@ -406,7 +104,7 @@ RUN /usr/GetPackages.sh
 [10] [mirror eclipse plugin sites](https://stackoverflow.com/questions/1371176/downloading-eclipse-plug-in-update-sites-for-offline-installation)\
 [11] [Eclipse headless](https://gnu-mcu-eclipse.github.io/advanced/headless-builds/)\
 [12] [Valid URL](https://stackoverflow.com/questions/1547899/which-characters-make-a-url-invalid)\
-[13] []()\
-[14] []()\
+[13] [Meta-Model](https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation/blob/master/bundles/org.palladiosimulator.experimentautomation/model/experimentautomation.ecore)\
+[14] [Eclipse Core](https://www.eclipse.org/eclipse/platform-core/)\
 [15] []()\
 [16] []()\

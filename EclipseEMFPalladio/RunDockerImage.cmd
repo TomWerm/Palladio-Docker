@@ -8,5 +8,6 @@ docker exec -it %CONTAINER_NAME% /usr/RunExperimentAutomation.sh "/usr/experimen
 REM Use these commands for background execution
 REM docker exec -it -d %CONTAINER_NAME% /usr/RunExperimentAutomation.sh "/usr/experimentData/model/Experiments/Capacity.experiments"
 REM timeout /T 30
-docker cp %CONTAINER_NAME%:/usr/experimentData "%SRC_PATH%\Output"
+docker exec -it %CONTAINER_NAME% bin/bash
+docker cp %CONTAINER_NAME%:/result "%SRC_PATH%\Output"
 docker stop %CONTAINER_ID%

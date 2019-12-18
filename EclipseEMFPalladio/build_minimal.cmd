@@ -1,0 +1,1 @@
+docker build -t eamin:latest -f minimal/Dockerfile .
