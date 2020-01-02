@@ -4,5 +4,5 @@ FROM thomasweber/eclipsemodelingtools
 COPY InstallFeature.sh /usr/InstallFeature.sh
 COPY InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
 COPY features.txt usr/features.txt
-RUN chmod +x usr/InstallLocalUpdates.sh
+RUN chmod a+rx usr/InstallLocalUpdates.sh
 RUN usr/InstallLocalUpdates.sh
