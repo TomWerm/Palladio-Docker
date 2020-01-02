@@ -1,4 +1,3 @@
-#package%updatesite
-#Installation is not working
-#org.palladiosimulator.product.feature%https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/
+#package1,package2,etc%updatesite1,updatesite2,etc
+#currently all packages needed to run the palladio experiment automation
 org.palladiosimulator.edp2.feature.feature.group,org.palladiosimulator.pcm.feature.feature.group,org.palladiosimulator.simucom.feature.feature.group,org.palladiosimulator.solver.feature.feature.group,org.palladiosimulator.recorderframework.feature.feature.group,org.palladiosimulator.analyzer.feature.feature.group,org.palladiosimulator.monitorrepository.feature.feature.group,org.palladiosimulator.simulizar.feature.feature.group,org.palladiosimulator.simulation.abstractsimengine.desmoj.feature.feature.group,org.palladiosimulator.experimentautomation.feature.feature.group,org.palladiosimulator.experimentautomation.application.feature.feature.group,org.palladiosimulator.experimentautomation.application.tooladapter.simulizar.feature.feature.group%https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/

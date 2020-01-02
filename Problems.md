@@ -11,9 +11,6 @@
 - es gibt keine installAll Operation - einzeln installieren
 - hat Palladio ein Paket mit allen Features? - nein
 - p2 scheint die Referenzen nicht vernünftig aufzulösen - mit der Eclipse Update Site gehts
-## Eclipse
-![](choices.png)
-- einen Tag später ging alles problemlos
 ## Idee
 - ~~nutzen des dropins folders stattdessen~~
 - ~~Installation scheint grundsätzlich zu funktionieren~~
