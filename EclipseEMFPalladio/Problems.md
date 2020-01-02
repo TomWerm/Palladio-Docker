@@ -36,6 +36,17 @@
     * Nightly Aggregator-Seite hineininstallieren (p2 Direktor)
     * Example von Experiment-Automation zum Laufen bekommen [5]
 
+* Minimal
+    * eclipse ist gegen libc kompiliert, alpine hat nur uclibc [15]
+    ```shell
+    /usr/eclipse # ldd eclipse
+        /lib64/ld-linux-x86-64.so.2 (0x7fecfe4e4000)
+        libpthread.so.0 => /lib64/ld-linux-x86-64.so.2 (0x7fecfe4e4000)
+        libdl.so.2 => /lib64/ld-linux-x86-64.so.2 (0x7fecfe4e4000)
+        libc.so.6 => /lib64/ld-linux-x86-64.so.2 (0x7fecfe4e4000)
+    ```
+    * minimaler build nicht möglich
+
 ## Errors
 ```docker
 Cannot complete the install because one or more required items could not be found.
@@ -106,5 +117,5 @@ RUN /usr/GetPackages.sh
 [12] [Valid URL](https://stackoverflow.com/questions/1547899/which-characters-make-a-url-invalid)\
 [13] [Meta-Model](https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation/blob/master/bundles/org.palladiosimulator.experimentautomation/model/experimentautomation.ecore)\
 [14] [Eclipse Core](https://www.eclipse.org/eclipse/platform-core/)\
-[15] []()\
+[15] [Alpine Eclipse](https://stackoverflow.com/questions/43209656/cannot-run-jfrog-executable-from-inside-alpine-linux-container)\
 [16] []()\

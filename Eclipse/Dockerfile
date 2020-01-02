@@ -1,6 +1,7 @@
-FROM alpine:3.9.4
-RUN apk update && \
-    apk --no-cache add openjdk11 wget --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-RUN /usr/bin/wget 'https://ftp.fau.de/eclipse/oomph/epp/2019-12/R/eclipse-inst-linux64.tar.gz' && \
-    tar -xzf eclipse-inst-linux64.tar.gz -C /usr && \
-    rm eclipse-inst-linux64.tar.gz
+FROM ubuntu:20.04
+RUN apt-get clean && \
+    apt-get update --fix-missing && \ 
+    apt-get install -y --fix-missing openjdk-11-jre-headless wget
+RUN /usr/bin/wget 'http://ftp.fau.de/eclipse/technology/epp/downloads/release/2019-12/R/eclipse-java-2019-12-R-linux-gtk-x86_64.tar.gz' && \
+    tar -xzf eclipse-java-2019-12-R-linux-gtk-x86_64.tar.gz -C /usr && \
+    rm eclipse-java-2019-12-R-linux-gtk-x86_64.tar.gz
