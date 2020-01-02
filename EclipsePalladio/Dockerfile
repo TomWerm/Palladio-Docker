@@ -1,3 +1,4 @@
+#!/bin/bash
 FROM thomasweber/eclipsemodelingtools
 # Install everything from features.txt
 COPY InstallFeature.sh /usr/InstallFeature.sh
