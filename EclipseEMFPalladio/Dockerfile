@@ -16,7 +16,6 @@ RUN /usr/InstallEclipse.sh
 COPY InstallFeature.sh /usr/InstallFeature.sh
 COPY InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
 COPY features.txt usr/features.txt
-# Install everything from feature.txt
 RUN usr/InstallLocalUpdates.sh
 ######################################################
 # Complete Palladio/Eclipse installation at this point
