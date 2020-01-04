@@ -1,11 +1,6 @@
-FROM thomasweber/eclipsemodelingtools
-# Install everything from features.txt
-COPY InstallFeature.sh /usr/InstallFeature.sh
-COPY InstallLocalUpdates.sh /usr/InstallLocalUpdates.sh
-COPY features.txt usr/features.txt
-RUN usr/InstallLocalUpdates.sh
-######################################################
-# Complete Palladio/Eclipse installation at this point
-######################################################
-# Run the experiment automation and copy the experiment files
+FROM thomasweber/eclipsepalladio
 COPY RunExperimentAutomation.sh /usr/RunExperimentAutomation.sh
+RUN chmod a+rx usr/RunExperimentAutomation.sh
+RUN apt-get clean && \
+    apt-get update --fix-missing && \ 
+    apt-get install -y --fix-missing xvfb libgtk-3-0
