@@ -1,5 +1,6 @@
-SET SRC_PATH=F:\Projekte\docker\docker\EclipseEMFPalladio
-SET IMAGE_NAME=emf:latest
+SET SRC_PATH=%cd%
+SET IMAGE_NAME=thomasweber/palladioexperimentautomation:latest
+docker pull %IMAGE_NAME%
 docker run -it -d %IMAGE_NAME%
 FOR /F "tokens=*" %%g IN ('docker ps -q') do (SET CONTAINER_ID=%%g)
 FOR /F "tokens=*" %%g IN ('docker ps --format "{{.Names}}"') do (SET CONTAINER_NAME=%%g)
