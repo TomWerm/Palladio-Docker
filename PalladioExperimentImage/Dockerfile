@@ -1,0 +1,2 @@
+FROM palladioexperimentautomation:latest
+COPY ExperimentData/ /usr/ExperimentData
