@@ -20,8 +20,11 @@
 ## Generelle Ziele
 * Experiment-Automation: hat Eclipse Application, die man starten kann. Unklar, ob es ohne XServer startet.
   - TODO minimales Dockerfile ausprobieren
+  - das verwendete eclipse release ist mit libc kompiliert, dementsprechend nicht auf alpine nutzbar
 * Retten des EDP2-Repository/CSV: aktuell unklar. Mögliche Lösung mit neuer Launch Typ + Launch Group (zuerst Experiment durchführen, dann Ergebnisse exportieren).
   - FileDatasource mit location Attribut exportiert eine edp2-Datei
+  - csv export über neuen job realisiert
+  - zusätzliche Informationen durch Anpassung des ExperimentAutomation-Metamodells umgesetzt
 
 * Dockerfile definieren:
     * lädt einen bestimmten Palladio-Drop herunter, s.o.

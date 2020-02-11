@@ -1,14 +1,11 @@
 SET SRC_PATH=%cd%
-REM SET IMAGE_NAME=thomasweber/palladioexperimentimage:latest
-SET IMAGE_NAME=palladioexperimentimage:latest
+SET IMAGE_NAME=thomasweber/palladioexperimentimage:latest
 SET CONTAINER_PATH=/usr
 SET EXPERIMENT_FILE_NAME=Capacity.experiments
 SET EXPERIMENT_GEN_FILE_NAME=Generated.experiments
 SET EXPERIMENTS_FILE_DIR=/ExperimentData/model/Experiments/
 SET EXPERIMENTS_FILE_DIR_WINDOWS=\ExperimentData\model\Experiments\
-
-
-REM docker pull %IMAGE_NAME%
+docker pull %IMAGE_NAME%
 docker run -it -d %IMAGE_NAME%
 FOR /F "tokens=*" %%g IN ('docker ps -q') do (SET CONTAINER_ID=%%g)
 FOR /F "tokens=*" %%g IN ('docker ps --format "{{.Names}}"') do (SET CONTAINER_NAME=%%g)
