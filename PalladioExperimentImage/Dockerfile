@@ -1,2 +1,2 @@
-FROM palladioexperimentautomation:latest
+FROM thomasweber/palladioexperimentautomation:latest
 COPY ExperimentData/ /usr/ExperimentData
