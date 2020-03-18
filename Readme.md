@@ -40,3 +40,20 @@ The project is finished.
 [1] (https://help.eclipse.org/2019-12/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Fp2_dropins_format.html) \
 [2] (https://gnu-mcu-eclipse.github.io/advanced/headless-builds/) \
 [3] (https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation)
+
+## Further reading
+[1] [p2 director](https://help.eclipse.org/kepler/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)\
+[2] [Experiment automation (EA)](https://sdqweb.ipd.kit.edu/wiki/Palladio_Experiment_Automation)\
+[3] [EA - Github](https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation)\
+[4] [PCM](https://github.com/PalladioSimulator/Palladio-Bench-Product/blob/master/products/org.palladiosimulator.product/org.palladiosimulator.palladiobench.product)\
+[5] [Experiment Application](https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation/blob/master/bundles/org.palladiosimulator.experimentautomation.application/src/org/palladiosimulator/experimentautomation/application/ExperimentApplication.java)\
+[6] [PCM Nightly](https://updatesite.palladio-simulator.com/palladio-build-updatesite/nightly/)\
+[7] [EA espresso - Github](https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation/tree/master/bundles/org.palladiosimulator.experimentautomation.examples.espresso)\
+[8] [Docker-MavenXvfb](https://github.com/kit-sdq/Docker-MavenXvfb)\
+[9] [UnsatisfiedLinkError](https://bugs.eclipse.org/bugs/show_bug.cgi?id=549244)\
+[10] [mirror eclipse plugin sites](https://stackoverflow.com/questions/1371176/downloading-eclipse-plug-in-update-sites-for-offline-installation)\
+[11] [Eclipse headless](https://gnu-mcu-eclipse.github.io/advanced/headless-builds/)\
+[12] [Valid URL](https://stackoverflow.com/questions/1547899/which-characters-make-a-url-invalid)\
+[13] [Meta-Model](https://github.com/PalladioSimulator/Palladio-Addons-ExperimentAutomation/blob/master/bundles/org.palladiosimulator.experimentautomation/model/experimentautomation.ecore)\
+[14] [Eclipse Core](https://www.eclipse.org/eclipse/platform-core/)\
+[15] [Alpine Eclipse](https://stackoverflow.com/questions/43209656/cannot-run-jfrog-executable-from-inside-alpine-linux-container)\
